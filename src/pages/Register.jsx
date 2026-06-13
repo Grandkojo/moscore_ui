@@ -72,15 +72,7 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-background flex font-sans relative">
 
-      {/* Mobile Background Illustration (Hidden on Desktop) */}
-      <div className="absolute inset-0 z-0 lg:hidden flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 bg-white/90 z-10 backdrop-blur-[2px]"></div>
-        <img
-          src={signupIllustration}
-          alt="Background"
-          className="w-[120%] h-auto max-w-none opacity-40 object-cover absolute top-1/4"
-        />
-      </div>
+      {/* Mobile Background Illustration removed as requested */}
 
       {/* Left Column - Form */}
       <div className="flex-1 flex flex-col justify-center px-6 py-12 lg:px-16 xl:px-24 relative z-20">
