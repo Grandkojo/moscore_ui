@@ -13,8 +13,8 @@ export default function MobileLayout() {
     { name: "Repay", path: "/repay", icon: CreditCard },
   ]
 
-  // Hide nav on register page
-  if (location.pathname === "/register" || location.pathname === "/") {
+  // Hide nav on auth pages
+  if (location.pathname === "/register" || location.pathname === "/login" || location.pathname === "/") {
     return (
       <div className="min-h-[100dvh] bg-background w-full relative overflow-hidden">
         <Outlet />

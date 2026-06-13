@@ -1,13 +1,20 @@
 import { motion } from "framer-motion"
 import { LogOut, ChevronRight, Settings, Shield, Bell, HelpCircle, ArrowLeft } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { apiCall } from "../lib/api"
 
 export default function Profile() {
   const navigate = useNavigate()
 
-  const handleLogout = () => {
-    // In a real app, clear tokens here
-    navigate("/register")
+  const handleLogout = async () => {
+    try {
+      await apiCall("/auth/logout", { method: "POST" })
+    } catch (e) {
+      console.error("Logout failed:", e)
+    }
+    localStorage.removeItem("moscore_token")
+    localStorage.removeItem("moscore_user")
+    navigate("/login")
   }
 
   return (
@@ -29,12 +36,14 @@ export default function Profile() {
         animate={{ opacity: 1, y: 0 }}
         className="flex items-center space-x-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm"
       >
-        <div className="w-16 h-16 rounded-full bg-sky-50 flex items-center justify-center text-primary font-bold text-xl">
-          KM
+        <div className="w-16 h-16 rounded-full bg-sky-50 flex items-center justify-center text-primary font-bold text-xl uppercase">
+          {JSON.parse(localStorage.getItem("moscore_user") || "{}").name?.substring(0, 2) || "U"}
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-slate-800">Kojo Mensah</h2>
-          <p className="text-slate-500 text-sm">054 123 4567</p>
+          <h2 className="text-lg font-semibold text-slate-800">
+            {JSON.parse(localStorage.getItem("moscore_user") || "{}").name || "User"}
+          </h2>
+          <p className="text-slate-500 text-sm">Active</p>
         </div>
       </motion.div>
 
