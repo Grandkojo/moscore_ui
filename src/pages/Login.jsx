@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, Phone } from "lucide-react"
-import { apiCall } from "../lib/api"
+import { authService } from "../lib/auth"
 import logoWithName from "../assets/8.svg"
 import loginIllustration from "../assets/Login Illustration.png"
 
@@ -23,10 +23,7 @@ export default function Login() {
     setError("")
     setLoading(true)
     try {
-      await apiCall("/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ phone_number: phone })
-      })
+      await authService.login(phone)
       setStep(2)
     } catch (err) {
       setError(err.message)
@@ -39,10 +36,7 @@ export default function Login() {
     setError("")
     setLoading(true)
     try {
-      const data = await apiCall("/auth/verify", {
-        method: "POST",
-        body: JSON.stringify({ phone_number: phone, otp })
-      })
+      const data = await authService.verify(phone, otp)
       localStorage.setItem("moscore_token", data.access_token)
       localStorage.setItem("moscore_user", JSON.stringify({ id: data.user_id, name: data.full_name }))
       navigate("/dashboard")
@@ -62,9 +56,15 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex font-sans relative">
+    <div className="min-h-screen bg-background flex font-sans relative overflow-hidden">
 
-      {/* Mobile Background Illustration removed as requested */}
+      {/* Mobile Cute Artwork */}
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none z-0">
+        <div className="absolute bottom-[-5%] right-[-5%] w-56 opacity-[0.15]">
+          <img src={loginIllustration} alt="Artwork" className="w-full h-auto object-contain" />
+        </div>
+        <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+      </div>
 
       {/* Left Column - Form */}
       <div className="flex-1 flex flex-col justify-start pt-8 lg:justify-center px-6 pb-12 lg:py-12 lg:px-16 xl:px-24 relative z-20">

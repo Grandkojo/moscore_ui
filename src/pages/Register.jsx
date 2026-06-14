@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, User, Phone, Wallet, Signal } from "lucide-react"
-import { apiCall } from "../lib/api"
+import { authService } from "../lib/auth"
 import logoWithName from "../assets/8.svg"
 import signupIllustration from "../assets/Signup Illustration.png"
 
@@ -26,14 +26,11 @@ export default function Register() {
     setError("")
     setLoading(true)
     try {
-      await apiCall("/auth/register", {
-        method: "POST",
-        body: JSON.stringify({
-          phone_number: phone,
-          full_name: fullName,
-          momo_network: momoNetwork,
-          wallet_number: walletNumber
-        })
+      await authService.register({
+        phone_number: phone,
+        full_name: fullName,
+        momo_network: momoNetwork,
+        wallet_number: walletNumber
       })
       setStep(2)
     } catch (err) {
@@ -47,10 +44,7 @@ export default function Register() {
     setError("")
     setLoading(true)
     try {
-      const data = await apiCall("/auth/verify", {
-        method: "POST",
-        body: JSON.stringify({ phone_number: phone, otp })
-      })
+      const data = await authService.verify(phone, otp)
       localStorage.setItem("moscore_token", data.access_token)
       localStorage.setItem("moscore_user", JSON.stringify({ id: data.user_id, name: data.full_name }))
       navigate("/dashboard")
@@ -70,9 +64,15 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex font-sans relative">
+    <div className="min-h-screen bg-background flex font-sans relative overflow-hidden">
 
-      {/* Mobile Background Illustration removed as requested */}
+      {/* Mobile Cute Artwork */}
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none z-0">
+        <div className="absolute bottom-[-5%] right-[-5%] w-56 opacity-[0.15]">
+          <img src={signupIllustration} alt="Artwork" className="w-full h-auto object-contain" />
+        </div>
+        <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-300/10 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+      </div>
 
       {/* Left Column - Form */}
       <div className="flex-1 flex flex-col justify-start pt-8 lg:justify-center px-6 pb-12 lg:py-12 lg:px-16 xl:px-24 relative z-20">

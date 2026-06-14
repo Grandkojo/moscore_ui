@@ -29,9 +29,9 @@ export default function MobileLayout() {
         <Outlet />
       </main>
 
-      {/* Bottom Navigation - Floating Pill */}
-      <div className="fixed bottom-6 md:bottom-8 left-0 right-0 z-50 flex justify-center px-6 w-full pointer-events-none">
-        <nav className="flex justify-between items-center bg-white/90 backdrop-blur-md border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full px-2 py-2 w-full max-w-[450px] pointer-events-auto">
+      {/* Bottom Navigation - Full Width Glass with Pill Tabs */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 w-full bg-white/70 backdrop-blur-xl border-t-2 border-slate-200/80 pb-safe pt-3 pb-3">
+        <nav className="flex justify-between items-center max-w-[450px] mx-auto px-4 w-full">
           {tabs.map((tab) => {
             const isActive = location.pathname.startsWith(tab.path)
             const Icon = tab.icon
@@ -41,11 +41,11 @@ export default function MobileLayout() {
                 key={tab.name}
                 to={tab.path}
                 className={cn(
-                  "relative flex items-center justify-center px-4 py-2.5 rounded-full transition-all duration-200 ease-out",
-                  isActive ? "text-white bg-primary shadow-md shadow-primary/20" : "text-slate-400 hover:text-slate-600"
+                  "relative flex items-center justify-center px-4 py-2.5 rounded-full transition-all duration-300 ease-out",
+                  isActive ? "text-white bg-primary shadow-md shadow-primary/20" : "text-slate-500 hover:text-slate-800 hover:bg-slate-100"
                 )}
               >
-                <Icon className={cn("w-5 h-5 transition-all duration-200", isActive ? "stroke-[2.5px]" : "stroke-2")} />
+                <Icon className={cn("w-5 h-5 transition-all duration-300", isActive ? "stroke-[2.5px]" : "stroke-[1.5px]")} />
                 <AnimatePresence>
                   {isActive && (
                     <motion.span 
@@ -53,7 +53,7 @@ export default function MobileLayout() {
                       animate={{ width: "auto", opacity: 1 }}
                       exit={{ width: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="ml-2 text-xs font-bold tracking-wide overflow-hidden whitespace-nowrap"
+                      className="ml-2 text-sm font-bold tracking-wide overflow-hidden whitespace-nowrap"
                     >
                       {tab.name}
                     </motion.span>

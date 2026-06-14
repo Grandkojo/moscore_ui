@@ -5,8 +5,12 @@ export async function apiCall(endpoint, options = {}) {
   const token = localStorage.getItem("moscore_token")
   
   const headers = {
-    "Content-Type": "application/json",
     ...options.headers,
+  }
+
+  // Only add application/json if not using FormData
+  if (!(options.body instanceof FormData) && !headers["Content-Type"]) {
+    headers["Content-Type"] = "application/json"
   }
 
   if (token) {

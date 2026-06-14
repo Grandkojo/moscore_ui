@@ -1,14 +1,14 @@
 import { motion } from "framer-motion"
 import { LogOut, ChevronRight, Settings, Shield, Bell, HelpCircle, ArrowLeft } from "lucide-react"
 import { useNavigate } from "react-router-dom"
-import { apiCall } from "../lib/api"
+import { authService } from "../lib/auth"
 
 export default function Profile() {
   const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
-      await apiCall("/auth/logout", { method: "POST" })
+      await authService.logout()
     } catch (e) {
       console.error("Logout failed:", e)
     }

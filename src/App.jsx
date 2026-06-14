@@ -8,10 +8,13 @@ import Score from "./pages/Score"
 import Apply from "./pages/Apply"
 import Repay from "./pages/Repay"
 import Profile from "./pages/Profile"
+import ScoreDetails from "./pages/ScoreDetails"
+import { NotificationProvider } from "./contexts/NotificationContext"
 
 function App() {
   return (
-    <Router>
+    <NotificationProvider>
+      <Router>
       <Routes>
         <Route element={<MobileLayout />}>
           <Route path="/" element={<Landing />} />
@@ -22,9 +25,11 @@ function App() {
           <Route path="/apply" element={<Apply />} />
           <Route path="/repay" element={<Repay />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/score/details" element={<ScoreDetails />} />
         </Route>
       </Routes>
     </Router>
+    </NotificationProvider>
   )
 }
 
