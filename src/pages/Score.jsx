@@ -46,7 +46,7 @@ export default function Score() {
     <div className="px-6 py-8 space-y-8 max-w-5xl mx-auto w-full">
       <header>
         <h1 className="text-2xl font-bold tracking-tight mb-2 text-slate-800">Calculate Score</h1>
-        <p className="text-slate-500 text-sm">Upload your MoMo statement to update your CreditPrint score.</p>
+        <p className="text-slate-500 text-sm">Upload your MoMo statement to update your Credit score.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">

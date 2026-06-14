@@ -10,7 +10,7 @@ export default function Dashboard() {
       <header className="flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <div className="bg-sky-50 p-2 rounded-2xl">
-            <img src={logo} alt="CreditPrint Logo" className="h-8 w-8 object-contain" />
+            <img src={logo} alt="MoScore Logo" className="h-8 w-8 object-contain" />
           </div>
           <div>
             <p className="text-textMuted text-xs font-medium mb-0.5">Welcome back,</p>
@@ -31,7 +31,7 @@ export default function Dashboard() {
       >
         <div className="flex justify-between items-start mb-8">
           <div>
-            <p className="text-xs uppercase tracking-wider text-textMuted font-semibold mb-1">CreditPrint Score</p>
+            <p className="text-xs uppercase tracking-wider text-textMuted font-semibold mb-1">Credit Score</p>
             <div className="flex items-baseline space-x-2">
               <span className="text-6xl font-bold tracking-tighter swift-gradient">742</span>
               <span className="text-textMuted font-medium">/ 850</span>

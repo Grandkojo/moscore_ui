@@ -75,7 +75,7 @@ export default function Register() {
       {/* Mobile Background Illustration removed as requested */}
 
       {/* Left Column - Form */}
-      <div className="flex-1 flex flex-col justify-center px-6 py-12 lg:px-16 xl:px-24 relative z-20">
+      <div className="flex-1 flex flex-col justify-start pt-8 lg:justify-center px-6 pb-12 lg:py-12 lg:px-16 xl:px-24 relative z-20">
 
         <div className="w-full max-w-md mx-auto space-y-8">
           <motion.div
@@ -84,7 +84,7 @@ export default function Register() {
             transition={{ duration: 0.5 }}
           >
             <Link to="/" className="inline-block mb-10">
-              <img src={logoWithName} alt="CreditPrint" className="h-12 w-auto hover:opacity-80 transition-opacity" />
+              <img src={logoWithName} alt="MoScore" className="h-12 w-auto hover:opacity-80 transition-opacity" />
             </Link>
             <h1 className="text-4xl font-extrabold tracking-tight mb-3 text-slate-900 drop-shadow-sm">
               {step === 1 ? "Create Account" : "Verify code"}
@@ -107,7 +107,7 @@ export default function Register() {
             </motion.div>
           )}
 
-          <div className="space-y-6 bg-white/40 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-6 -mx-6 rounded-3xl lg:p-0 lg:mx-0 shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:shadow-none border border-white/50 lg:border-none">
+          <div className="space-y-6">
             <AnimatePresence mode="wait">
               {step === 1 ? (
                 <motion.div
@@ -206,8 +206,8 @@ export default function Register() {
                 onClick={handleNext}
                 disabled={loading || (step === 1 && !isStep1Valid) || (step === 2 && otp.length !== 6)}
                 className={`w-full font-bold rounded-2xl py-4 flex items-center justify-center space-x-2 transition-all active:scale-[0.98] text-lg ${loading || (step === 1 && !isStep1Valid) || (step === 2 && otp.length !== 6)
-                    ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                    : 'bg-primary hover:bg-primaryHover text-white shadow-xl shadow-primary/30'
+                  ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                  : 'bg-primary hover:bg-primaryHover text-white shadow-xl shadow-primary/30'
                   }`}
               >
                 <span>{loading ? "Please wait..." : (step === 1 ? "Continue" : "Verify & Register")}</span>
