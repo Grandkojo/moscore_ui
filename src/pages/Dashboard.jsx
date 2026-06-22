@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ShieldCheck, TrendingUp, Zap, FileText } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { scoreService } from "../lib/score"
-import logo from "../assets/7.svg"
 
 export default function Dashboard() {
   const [scoreData, setScoreData] = useState(null)
@@ -25,25 +24,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="px-6 py-8 space-y-8 max-w-4xl mx-auto w-full pb-24">
-      {/* Header */}
-      <header className="flex justify-between items-center">
-        <div className="flex items-center space-x-3">
-          <div className="bg-sky-50 p-2 rounded-2xl">
-            <img src={logo} alt="MoScore Logo" className="h-8 w-8 object-contain" />
-          </div>
-          <div>
-            <p className="text-textMuted text-xs font-medium mb-0.5">Welcome back,</p>
-            <h1 className="text-lg font-bold tracking-tight leading-none text-slate-800">
-              {JSON.parse(localStorage.getItem("moscore_user") || "{}").name || "User"}
-            </h1>
-          </div>
-        </div>
-        <Link to="/profile" className="w-10 h-10 shadow-sm rounded-full bg-white border border-slate-200 flex items-center justify-center active:scale-95 transition-transform">
-          <UserIcon />
-        </Link>
-      </header>
-
+    <div className="px-6 py-6 space-y-8 max-w-4xl mx-auto w-full">
       {loading ? (
         <div className="py-20 flex justify-center text-slate-400">Loading your score...</div>
       ) : !scoreData ? (

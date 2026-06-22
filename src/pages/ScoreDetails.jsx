@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Target, CheckCircle, ArrowLeft } from "lucide-react"
+import { Target, CheckCircle } from "lucide-react"
 import { useLocation, useNavigate } from "react-router-dom"
 
 export default function ScoreDetails() {
@@ -17,17 +17,7 @@ export default function ScoreDetails() {
   }
 
   return (
-    <div className="px-6 py-8 space-y-8 max-w-4xl mx-auto w-full pb-24">
-      {/* Header */}
-      <header className="flex items-center space-x-4">
-        <button onClick={() => navigate(-1)} className="p-2 -ml-2 hover:bg-slate-100 rounded-full transition-colors active:scale-95">
-          <ArrowLeft className="w-6 h-6 text-slate-700" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-800">Score Details</h1>
-          <p className="text-slate-500 text-xs">Computed on {new Date(score.computed_at).toLocaleString()}</p>
-        </div>
-      </header>
+    <div className="px-6 py-6 space-y-6 max-w-4xl mx-auto w-full">
 
       {/* Main Stats */}
       <motion.div 

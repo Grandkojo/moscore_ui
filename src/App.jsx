@@ -8,6 +8,7 @@ import Score from "./pages/Score"
 import Apply from "./pages/Apply"
 import Repay from "./pages/Repay"
 import Profile from "./pages/Profile"
+import PaymentDetail from "./pages/PaymentDetail"
 import ScoreDetails from "./pages/ScoreDetails"
 import { NotificationProvider } from "./contexts/NotificationContext"
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/score" element={<Score />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/repay" element={<Repay />} />
+          <Route path="/loans/:id" element={<PaymentDetail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/score/details" element={<ScoreDetails />} />
         </Route>

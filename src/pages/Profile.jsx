@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { LogOut, ChevronRight, Settings, Shield, Bell, HelpCircle, ArrowLeft } from "lucide-react"
+import { LogOut, ChevronRight, Settings, Shield, Bell, HelpCircle } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { authService } from "../lib/auth"
 
@@ -18,17 +18,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="px-6 py-8 space-y-8 max-w-3xl mx-auto w-full">
-      {/* Header */}
-      <header className="flex items-center space-x-4 mb-8">
-        <button 
-          onClick={() => navigate(-1)}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-slate-200 shadow-sm active:scale-95 transition-transform"
-        >
-          <ArrowLeft className="w-5 h-5 text-slate-600" />
-        </button>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">Profile</h1>
-      </header>
+    <div className="px-6 py-6 space-y-6 max-w-3xl mx-auto w-full">
 
       {/* User Info */}
       <motion.div 

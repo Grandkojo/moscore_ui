@@ -10,7 +10,7 @@ export function NotificationProvider({ children }) {
 
   const showNotification = useCallback((message, type = "error") => {
     setNotification({ message, type })
-    setTimeout(() => setNotification(null), 5000)
+    setTimeout(() => setNotification(null), 7000)
   }, [])
 
   return (
